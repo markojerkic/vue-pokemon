@@ -1,0 +1,32 @@
+Url aplikacije: https://vue-pokemon-seven.vercel.app/
+
+- interpolation/one-way binding
+    - Da, koristim ga npr. u komponenti: `src/components/Banner.vue` linija 13 da se prikaže broj lajkanih pokemona
+- two-way binding
+    - Da, koristim ga npr. u komponenti: `src/components/Score.vue` gdje se varijable "score" veže na input polje i ta vrijednost se printa ispod u <h1> elementu
+- methods
+    - Da, koristim ih npr. u `src/views/PokemonById.vue` gdje imaju metode fetchPokemon, addPokemonToLikes itd.
+- computed properties
+    - Da, koristim ih npr. u `src/components/PokemonPreview.vue` gdje iz varijable `name` stvorim link za sliku pokemona koji se spremi u varijablu `image`
+- barem jedan scoped style
+    - Da, koristim ih npr. u `src/components/PokemonPreview.vue`, `src/views/PokemonById.vue` itd.
+- koristiti barem jedan lifecycle hook
+    - Da, koristim ih npr. u `src/views/PokemonById.vue` da povučem podatke o pokemonu prema putanji iz API-a
+- routing (više stranica)
+    - Da, imam home rutu na "/", "/pokemon/:id" i "/liked" za prikaz pojedinog pokemona
+- dinamičko usmjeravanje s 404 stranicom ("catch all")
+    - Da, svaka ruta koja nije uhvaćena u routeru ide na komponentu `src/views/NotFound.vue`
+- komponenta bez stanja, koristiti properties
+    - Da, primjer je `src/components/Like.vue` koja samo prima prop jeli pokemon lajkiran ili ne
+- komponenta sa stanjem
+    - Da, primjer je `src/components/Score.vue` koja ima varijablu score koju korisnik može mijenjati
+- barem jedna komponenta mora emitirati barem jedan event
+    - Da, primjer je `src/components/Like.vue` koja emitira event kada korsinik doda pokemone u lajkane ili ga ukloni
+    - Taj event se hvata onda u `src/views/PokemonById.vue`
+- store (Pinia)
+    - Da, definira se u `src/stores/likes.ts` i koristi se npr. u `src/App.vue` da se prikaže broj lajkanih pokemona
+    - Također se koristi u `src/views/PokemonById.vue` da se ažurira stanje lajkanih pokemona
+- asinkroni dohvat podataka s backenda, možete:
+    - Da, u `src/views/PokemonById.vue` se dohvaćaju podaci o pokemonu prema id-u kada se komponenta mounta
+        - Poziva se vanjski api s https://pokeapi.co/ preko asinkrone funkcije `fetchPokemon` koja koristi fetch API
+

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Banner from './components/Banner.vue'
 
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld />
+      <Banner />
     </div>
   </header>
 
