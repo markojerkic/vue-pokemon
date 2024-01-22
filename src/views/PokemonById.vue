@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Score from "../components/Score.vue";
+import Like from "../components/Like.vue";
 </script>
 
 <script lang="ts">
@@ -63,16 +64,7 @@ export default {
         </li>
       </ul>
 
-      <button
-        class="like-button"
-        v-if="!isLiked(pokemon!.name)"
-        @click="addPokemonToLikes"
-      >
-        Like this pokemon
-      </button>
-      <button class="remove-like-button" v-else @click="removePokemonFromLikes">
-        Remove this pokemo from your likes
-      </button>
+      <Like :isLiked="isLiked(pokemon.name)" @add-like="addPokemonToLikes" @remove-like="removePokemonFromLikes" />
 
       <Score />
 
@@ -87,25 +79,6 @@ export default {
 </template>
 
 <style scoped>
-button {
-  cursor: pointer;
-  margin: 1rem;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-}
-.remove-like-button {
-  background-color: #f44336;
-}
-.remove-like-button:hover {
-  background-color: #ba000d;
-}
-.like-button {
-  background-color: #4caf50;
-}
 img {
   width: 300px;
   height: 300px;
