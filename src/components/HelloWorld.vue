@@ -1,6 +1,17 @@
+<script setup lang="ts">
+import { useLikedPokemonStore } from "../stores/likes";
+
+const store = useLikedPokemonStore();
+
+
+</script>
+
 <template>
   <div class="greetings">
     <h1 class="green">Pokemon app</h1>
+
+    <h3>Number of liked pokemon: {{ store.likesCount }}</h3>
+    <router-link to="/liked">Liked pokemon list</router-link>
   </div>
 </template>
 
@@ -22,6 +33,7 @@ h3 {
 }
 
 @media (min-width: 1024px) {
+
   .greetings h1,
   .greetings h3 {
     text-align: left;
