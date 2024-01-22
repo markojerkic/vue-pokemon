@@ -52,7 +52,7 @@ export default {
 </script>
 
 <template>
-  <div class="about" v-if="!this.loading && this.pokemon">
+  <div class="about" v-if="!loading && pokemon">
     <div class="about-container">
       <h1>{{ pokemon!.name }}</h1>
       <img :src="pokemon!.sprites.front_default" />
