@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import {RouterLink} from 'vue-router'
+
 const props = defineProps({
   name: String
 })
@@ -20,7 +22,9 @@ export default {
 <template>
 
   <div class="pokemon-preview">
-    <h2>{{ name }}</h2>
-    <img :src="image" />
+    <router-link :to="{ name: 'pokemon', params: {id: name } }">
+      <h2>{{ name }}</h2>
+      <img :src="image" />
+    </router-link>
   </div>
 </template>
