@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useLikedPokemonStore } from "../stores/likes";
-import PokemonPreview from "../components/PokemonPreview.vue";
 
 const likesStore = useLikedPokemonStore();
 

@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import Score from "../components/Score.vue";
+</script>
+
 <script lang="ts">
-import { useLikedPokemonStore } from '@/stores/likes';
+import { useLikedPokemonStore } from "@/stores/likes";
 
 export default {
   data() {
@@ -25,7 +29,9 @@ export default {
   methods: {
     async fetchPokemon(id: string | string[]) {
       this.loading = true;
-      const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => res.json());
+      const pokemon = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${id}`
+      ).then((res) => res.json());
       this.pokemon = pokemon;
       this.loading = false;
     },
@@ -36,7 +42,7 @@ export default {
 
     removePokemonFromLikes() {
       this.removeLike(this.pokemon!.name);
-    }
+    },
   },
   async mounted() {
     await this.fetchPokemon(this.$route.params.id);
@@ -47,8 +53,8 @@ export default {
 <template>
   <div class="about" v-if="!this.loading && this.pokemon">
     <div class="about-container">
-      <h1>{{ pokemon.name }}</h1>
-      <img :src="pokemon.sprites.front_default" />
+      <h1>{{ pokemon!.name }}</h1>
+      <img :src="pokemon!.sprites.front_default" />
       <p>Number of abilities: {{ numberOfAbilities }}</p>
       <h2>Abilities</h2>
       <ul>
@@ -57,12 +63,21 @@ export default {
         </li>
       </ul>
 
-      <button class="like-button" v-if="!isLiked(pokemon.name)" @click="addPokemonToLikes">Like this pokemon</button>
-      <button class="remove-like-button" v-else @click="removePokemonFromLikes">Remove this pokemo from your likes</button>
+      <button
+        class="like-button"
+        v-if="!isLiked(pokemon!.name)"
+        @click="addPokemonToLikes"
+      >
+        Like this pokemon
+      </button>
+      <button class="remove-like-button" v-else @click="removePokemonFromLikes">
+        Remove this pokemo from your likes
+      </button>
+
+      <Score />
 
       <router-link :to="{ name: 'home' }">
-        <h3>
-          <- Back to list of pokemon </h3>
+        <h3><- Back to list of pokemon</h3>
       </router-link>
     </div>
   </div>
@@ -90,6 +105,11 @@ button {
 }
 .like-button {
   background-color: #4caf50;
+}
+img {
+  width: 300px;
+  height: 300px;
+  image-rendering: pixelated;
 }
 .like-button:hover {
   background-color: #357a38;
